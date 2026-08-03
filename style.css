@@ -69,7 +69,7 @@ nav a:hover {
     color: #f5bd35;
 }
 
-/* APPLY BUTTON */
+/* BUTTONS */
 
 .apply-btn,
 .primary-btn,
@@ -99,16 +99,18 @@ nav a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    padding: 80px 20px;
+    gap: 80px;
+    padding: 70px 7%;
     color: white;
+
     background:
         radial-gradient(circle at top right, #123c70, transparent 40%),
         linear-gradient(135deg, #06142d, #092c55);
 }
 
 .hero-content {
-    max-width: 850px;
+    max-width: 700px;
+    text-align: left;
 }
 
 .badge {
@@ -146,7 +148,6 @@ nav a:hover {
 .hero-buttons {
     margin-top: 35px;
     display: flex;
-    justify-content: center;
     gap: 15px;
 }
 
@@ -165,6 +166,38 @@ nav a:hover {
 .primary-btn:hover,
 .secondary-btn:hover {
     transform: translateY(-3px);
+}
+
+/* ================= HERO FOUNDER ================= */
+
+.hero-founder {
+    text-align: center;
+    width: 280px;
+    flex-shrink: 0;
+}
+
+.hero-founder img {
+    width: 240px;
+    height: 300px;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+    margin: 0 auto 15px auto;
+    border-radius: 20px;
+    border: 3px solid #f5bd35;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.4);
+    background: rgba(255,255,255,0.05);
+}
+
+.hero-founder h3 {
+    color: #f5bd35;
+    font-size: 24px;
+    margin-top: 10px;
+}
+
+.hero-founder p {
+    color: white;
+    font-size: 16px;
 }
 
 /* ================= SECTIONS ================= */
@@ -296,24 +329,6 @@ nav a:hover {
     background: linear-gradient(135deg, #07152f, #0b3764);
 }
 
-/* FOUNDER PHOTO */
-
-.founder-photo {
-    width: 100px !important;
-    height: 100px !important;
-    max-width: 100px !important;
-    max-height: 100px !important;
-    object-fit: cover !important;
-    object-position: center 25% !important;
-    border-radius: 50%;
-    display: block;
-    margin: 0 auto 10px auto;
-    border: 3px solid #f5bd35;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-}
-
-/* FOUNDER TEXT */
-
 .founder-label {
     color: #f5bd35;
     font-weight: bold;
@@ -404,6 +419,30 @@ footer h3 {
         display: none;
     }
 
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+        padding: 60px 20px;
+    }
+
+    .hero-content {
+        text-align: center;
+    }
+
+    .hero-founder {
+        width: 100%;
+    }
+
+    .hero-founder img {
+        width: 200px;
+        height: 250px;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
     .cards {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -453,18 +492,6 @@ footer h3 {
 
     .section-title h2 {
         font-size: 28px;
-    }
-
-    /* MOBILE FOUNDER PHOTO */
-
-    .founder-photo {
-        width: 85px !important;
-        height: 85px !important;
-        max-width: 85px !important;
-        max-height: 85px !important;
-        object-fit: cover !important;
-        object-position: center 25% !important;
-        margin: 0 auto 10px auto;
     }
 
     .founder-content h2 {
