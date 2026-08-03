@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+
+<html lang="mr">
+
+<head>
+
+```
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Student Registration | DTE</title>
+
+<style>
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, "Noto Sans Devanagari", sans-serif;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 30px 15px;
+
+        background:
+            radial-gradient(circle at top right, #123c70, transparent 40%),
+            linear-gradient(135deg, #06142d, #092c55);
+
+        color: #172033;
+    }
+
+    .register-container {
+        width: 100%;
+        max-width: 480px;
+    }
+
+    .register-box {
+        background: white;
+        padding: 35px;
+        border-radius: 22px;
+        box-shadow: 0 15px 45px rgba(0,0,0,0.3);
+    }
+
+    .logo {
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+    .logo img {
+        width: 75px;
+        height: 75px;
+        object-fit: contain;
+        border-radius: 12px;
+    }
+
+    .logo h1 {
+        margin-top: 10px;
+        color: #07152f;
+        font-size: 30px;
+    }
+
+    .logo p {
+        color: #666;
+        font-size: 14px;
+    }
+
+    .title {
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+    .title h2 {
+        color: #07152f;
+        font-size: 25px;
+    }
+
+    .title p {
+        color: #666;
+        margin-top: 5px;
+        font-size: 14px;
+    }
+
+    .form-group {
+        margin-bottom: 18px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 7px;
+        font-weight: bold;
+        color: #07152f;
+    }
+
+    .form-group input {
+        width: 100%;
+        padding: 13px 15px;
+        border: 1px solid #d6dbe5;
+        border-radius: 10px;
+        font-size: 15px;
+        outline: none;
+        transition: 0.3s;
+    }
+
+    .form-group input:focus {
+        border-color: #f5bd35;
+        box-shadow: 0 0 0 3px rgba(245,189,53,0.15);
+    }
+
+    .register-btn {
+        width: 100%;
+        padding: 14px;
+        border: none;
+        border-radius: 30px;
+        background: #f5bd35;
+        color: #07152f;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .register-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .register-btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+    .message {
+        display: none;
+        margin-top: 15px;
+        padding: 12px;
+        border-radius: 10px;
+        text-align: center;
+        font-size: 14px;
+    }
+
+    .success {
+        display: block;
+        background: #e8f7ee;
+        color: #176b3a;
+    }
+
+    .error {
+        display: block;
+        background: #fdecec;
+        color: #a12626;
+    }
+
+    .login-link {
+        text-align: center;
+        margin-top: 22px;
+        color: #666;
+        font-size: 14px;
+    }
+
+    .login-link a {
+        color: #07152f;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    .login-link a:hover {
+        color: #c08a12;
+    }
+
+    .back-home {
+        display: block;
+        text-align: center;
+        margin-top: 15px;
+        color: #666;
+        text-decoration: none;
+        font-size: 14px;
+    }
+
+    .back-home:hover {
+        color: #07152f;
+    }
+
+    @media (max-width: 500px) {
+
+        .register-box {
+            padding: 25px 20px;
+        }
+
+        .logo img {
+            width: 65px;
+            height: 65px;
+        }
+
+        .logo h1 {
+            font-size: 26px;
+        }
+
+    }
+
+</style>
+```
+
+</head>
+
+<body>
+
+<div class="register-container">
+
+```
+<div class="register-box">
+
+
+    <!-- LOGO -->
+
+    <div class="logo">
+
+        <img src="dte-logo.png"
+             alt="DTE Logo">
+
+        <h1>DTE</h1>
+
+        <p>
+            Digital Technology Education
+        </p>
+
+    </div>
+
+
+    <!-- TITLE -->
+
+    <div class="title">
+
+        <h2>
+            Student Registration
+        </h2>
+
+        <p>
+            DTE Student Account तयार करा
+        </p>
+
+    </div>
+
+
+    <!-- REGISTRATION FORM -->
+
+    <form id="registerForm">
+
+
+        <div class="form-group">
+
+            <label for="fullName">
+                पूर्ण नाव
+            </label>
+
+            <input
+                type="text"
+                id="fullName"
+                placeholder="तुमचे पूर्ण नाव टाका"
+                required>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="email">
+                Email Address
+            </label>
+
+            <input
+                type="email"
+                id="email"
+                placeholder="example@gmail.com"
+                required>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="password">
+                Password
+            </label>
+
+            <input
+                type="password"
+                id="password"
+                placeholder="किमान 6 अक्षरे"
+                minlength="6"
+                required>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="confirmPassword">
+                Confirm Password
+            </label>
+
+            <input
+                type="password"
+                id="confirmPassword"
+                placeholder="Password पुन्हा टाका"
+                minlength="6"
+                required>
+
+        </div>
+
+
+        <button
+            type="submit"
+            class="register-btn"
+            id="registerBtn">
+
+            Create Student Account
+
+        </button>
+
+
+        <div id="message"
+             class="message">
+        </div>
+
+
+    </form>
+
+
+    <!-- LOGIN LINK -->
+
+    <div class="login-link">
+
+        आधीच Account आहे?
+
+        <a href="login.html">
+            Login करा
+        </a>
+
+    </div>
+
+
+    <a href="index.html"
+       class="back-home">
+
+        ← DTE Home Page वर जा
+
+    </a>
+
+
+</div>
+```
+
+</div>
+
+<!-- ================= FIREBASE ================= -->
+
+<script type="module">
+
+    import {
+        initializeApp
+    } from "https://www.gstatic.com/firebasejs/12.17.0/firebase-app.js";
+
+
+    import {
+        getAuth,
+        createUserWithEmailAndPassword,
+        updateProfile,
+        sendEmailVerification
+    } from "https://www.gstatic.com/firebasejs/12.17.0/firebase-auth.js";
+
+
+    // Firebase Configuration
+
+    const firebaseConfig = {
+
+        apiKey: "AIzaSyB55Au5qzCGpSvju4_GtdvYLkInPD5wmGc",
+
+        authDomain:
+        "dte-digital-education.firebaseapp.com",
+
+        projectId:
+        "dte-digital-education",
+
+        storageBucket:
+        "dte-digital-education.firebasestorage.app",
+
+        messagingSenderId:
+        "115032743682",
+
+        appId:
+        "1:115032743682:web:ca98f116d2fe6b5173ac1b"
+
+    };
+
+
+    // Initialize Firebase
+
+    const app =
+        initializeApp(firebaseConfig);
+
+
+    // Initialize Authentication
+
+    const auth =
+        getAuth(app);
+
+
+    // Form
+
+    const registerForm =
+        document.getElementById("registerForm");
+
+
+    const message =
+        document.getElementById("message");
+
+
+    const registerBtn =
+        document.getElementById("registerBtn");
+
+
+    // Registration
+
+    registerForm.addEventListener(
+        "submit",
+        async function(event) {
+
+            event.preventDefault();
+
+
+            const fullName =
+                document
+                .getElementById("fullName")
+                .value
+                .trim();
+
+
+            const email =
+                document
+                .getElementById("email")
+                .value
+                .trim();
+
+
+            const password =
+                document
+                .getElementById("password")
+                .value;
+
+
+            const confirmPassword =
+                document
+                .getElementById("confirmPassword")
+                .value;
+
+
+            // Clear previous message
+
+            message.className =
+                "message";
+
+            message.textContent =
+                "";
+
+
+            // Check Password
+
+            if (password !== confirmPassword) {
+
+                message.textContent =
+                    "❌ Password आणि Confirm Password समान नाहीत.";
+
+                message.classList.add("error");
+
+                return;
+
+            }
+
+
+            if (password.length < 6) {
+
+                message.textContent =
+                    "❌ Password किमान 6 अक्षरांचा असावा.";
+
+                message.classList.add("error");
+
+                return;
+
+            }
+
+
+            // Disable button
+
+            registerBtn.disabled = true;
+
+            registerBtn.textContent =
+                "Account तयार होत आहे...";
+
+
+            try {
+
+
+                // Create Firebase User
+
+                const userCredential =
+                    await createUserWithEmailAndPassword(
+                        auth,
+                        email,
+                        password
+                    );
+
+
+                const user =
+                    userCredential.user;
+
+
+                // Set Student Name
+
+                await updateProfile(
+                    user,
+                    {
+                        displayName: fullName
+                    }
+                );
+
+
+                // Send Email Verification
+
+                await sendEmailVerification(user);
+
+
+                message.textContent =
+                    "✅ Account यशस्वीपणे तयार झाले! तुमच्या Email वर Verification Link पाठवली आहे. Email Verify केल्यानंतर Login करा.";
+
+
+                message.classList.add("success");
+
+
+                // Reset form
+
+                registerForm.reset();
+
+
+                registerBtn.disabled =
+                    false;
+
+                registerBtn.textContent =
+                    "Create Student Account";
+
+
+            }
+
+            catch (error) {
+
+
+                console.error(error);
+
+
+                let errorMessage =
+                    "❌ Registration करताना समस्या आली.";
+
+
+                if (
+                    error.code ===
+                    "auth/email-already-in-use"
+                ) {
+
+                    errorMessage =
+                        "❌ हा Email आधीपासून Registered आहे. कृपया Login करा.";
+
+                }
+
+                else if (
+                    error.code ===
+                    "auth/invalid-email"
+                ) {
+
+                    errorMessage =
+                        "❌ कृपया योग्य Email Address टाका.";
+
+                }
+
+                else if (
+                    error.code ===
+                    "auth/weak-password"
+                ) {
+
+                    errorMessage =
+                        "❌ Password खूप weak आहे. मजबूत Password वापरा.";
+
+                }
+
+
+                message.textContent =
+                    errorMessage;
+
+
+                message.classList.add("error");
+
+
+                registerBtn.disabled =
+                    false;
+
+                registerBtn.textContent =
+                    "Create Student Account";
+
+            }
+
+        }
+
+    );
+
+</script>
+
+</body>
+
+</html>
