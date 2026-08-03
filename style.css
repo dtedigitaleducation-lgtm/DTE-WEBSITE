@@ -303,14 +303,13 @@ nav a:hover {
     height: 100px !important;
     max-width: 100px !important;
     max-height: 100px !important;
-    object-fit: contain;
-    object-position: center;
+    object-fit: cover !important;
+    object-position: center 25% !important;
     border-radius: 50%;
     display: block;
     margin: 0 auto 10px auto;
     border: 3px solid #f5bd35;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    background: white;
 }
 
 /* FOUNDER TEXT */
@@ -463,8 +462,8 @@ footer h3 {
         height: 85px !important;
         max-width: 85px !important;
         max-height: 85px !important;
-        object-fit: contain;
-        object-position: center;
+        object-fit: cover !important;
+        object-position: center 25% !important;
         margin: 0 auto 10px auto;
     }
 
