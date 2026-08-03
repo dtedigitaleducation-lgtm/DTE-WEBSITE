@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="mr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Student Dashboard | DTE</title>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+            font-family: Arial, "Noto Sans Devanagari", sans-serif;
+            background: #f5f7fb;
+            color: #172033;
+        }
+
+
+        /* ================= HEADER ================= */
+
+        .header {
+
+            background: #07152f;
+            color: white;
+
+            padding: 12px 6%;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            box-shadow:
+                0 3px 15px rgba(0,0,0,0.2);
+
+        }
+
+
+        .logo {
+
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+        }
+
+
+        .logo img {
+
+            width: 50px;
+            height: 50px;
+
+            object-fit: contain;
+
+            border-radius: 10px;
+
+        }
+
+
+        .logo-text h2 {
+
+            color: #f5bd35;
+
+            font-size: 22px;
+
+        }
+
+
+        .logo-text p {
+
+            font-size: 11px;
+            color: #ddd;
+
+        }
+
+
+        /* LOGOUT */
+
+        .logout-btn {
+
+            border: none;
+
+            background: #f5bd35;
+
+            color: #07152f;
+
+            padding: 10px 22px;
+
+            border-radius: 25px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+
+        }
+
+
+        .logout-btn:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 5px 15px rgba(0,0,0,0.2);
+
+        }
+
+
+        /* ================= MAIN ================= */
+
+        .dashboard {
+
+            max-width: 1200px;
+
+            margin: auto;
+
+            padding: 50px 25px;
+
+        }
+
+
+        /* WELCOME */
+
+        .welcome {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #07152f,
+                    #0b3764
+                );
+
+            color: white;
+
+            padding: 35px;
+
+            border-radius: 20px;
+
+            margin-bottom: 30px;
+
+            box-shadow:
+                0 10px 30px rgba(0,0,0,0.12);
+
+        }
+
+
+        .welcome h1 {
+
+            color: #f5bd35;
+
+            font-size: 32px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .welcome p {
+
+            color: #e0e7f0;
+
+        }
+
+
+        /* ================= PROFILE ================= */
+
+        .profile-card {
+
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 18px;
+
+            margin-bottom: 30px;
+
+            box-shadow:
+                0 5px 20px rgba(0,0,0,0.07);
+
+        }
+
+
+        .profile-card h2 {
+
+            color: #07152f;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .profile-info {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 15px;
+
+        }
+
+
+        .info-box {
+
+            background: #f5f7fb;
+
+            padding: 15px;
+
+            border-radius: 12px;
+
+        }
+
+
+        .info-box strong {
+
+            display: block;
+
+            color: #07152f;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .info-box span {
+
+            color: #555;
+
+            word-break: break-word;
+
+        }
+
+
+        /* ================= SECTION TITLE ================= */
+
+        .section-title {
+
+            text-align: center;
+
+            margin: 40px 0 25px;
+
+        }
+
+
+        .section-title p {
+
+            color: #c08a12;
+
+            font-weight: bold;
+
+            letter-spacing: 2px;
+
+        }
+
+
+        .section-title h2 {
+
+            color: #07152f;
+
+            font-size: 30px;
+
+        }
+
+
+        /* ================= COURSE CARDS ================= */
+
+        .course-cards {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 25px;
+
+        }
+
+
+        .course-card {
+
+            background: white;
+
+            padding: 30px 25px;
+
+            border-radius: 18px;
+
+            text-align: center;
+
+            border-top:
+                4px solid #f5bd35;
+
+            box-shadow:
+                0 5px 20px rgba(0,0,0,0.07);
+
+            transition: 0.3s;
+
+        }
+
+
+        .course-card:hover {
+
+            transform:
+                translateY(-7px);
+
+            box-shadow:
+                0 12px 30px rgba(0,0,0,0.12);
+
+        }
+
+
+        .course-icon {
+
+            font-size: 45px;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .course-card h3 {
+
+            color: #07152f;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .course-card p {
+
+            color: #666;
+
+            font-size: 14px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .course-btn {
+
+            display: inline-block;
+
+            background: #07152f;
+
+            color: white;
+
+            text-decoration: none;
+
+            padding: 9px 20px;
+
+            border-radius: 25px;
+
+            font-weight: bold;
+
+        }
+
+
+        .course-btn:hover {
+
+            background: #f5bd35;
+
+            color: #07152f;
+
+        }
+
+
+        /* ================= FOOTER ================= */
+
+        footer {
+
+            text-align: center;
+
+            background: #050d1c;
+
+            color: #ccc;
+
+            padding: 30px 20px;
+
+            margin-top: 50px;
+
+        }
+
+
+        footer strong {
+
+            color: #f5bd35;
+
+        }
+
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 800px) {
+
+            .course-cards {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .header {
+
+                padding: 10px 4%;
+
+            }
+
+
+            .logo-text h2 {
+
+                font-size: 18px;
+
+            }
+
+
+            .logo-text p {
+
+                font-size: 9px;
+
+            }
+
+
+            .logout-btn {
+
+                padding: 8px 15px;
+
+                font-size: 13px;
+
+            }
+
+
+            .dashboard {
+
+                padding: 30px 15px;
+
+            }
+
+
+            .welcome {
+
+                padding: 25px;
+
+            }
+
+
+            .welcome h1 {
+
+                font-size: 25px;
+
+            }
+
+
+            .profile-info {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .course-cards {
+
+                grid-template-columns: 1fr;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header class="header">
+
+
+    <div class="logo">
+
+
+        <img src="dte-logo.png"
+             alt="DTE Logo">
+
+
+        <div class="logo-text">
+
+            <h2>DTE</h2>
+
+            <p>
+                Digital Technology Education
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+    <button
+        class="logout-btn"
+        id="logoutBtn">
+
+        Logout 🚪
+
+    </button>
+
+
+</header>
+
+
+
+<!-- ================= DASHBOARD ================= -->
+
+<main class="dashboard">
+
+
+    <!-- WELCOME -->
+
+    <section class="welcome">
+
+
+        <h1>
+
+            Welcome,
+            <span id="studentName">
+                Student
+            </span>
+            👋
+
+        </h1>
+
+
+        <p>
+
+            DTE Student Dashboard मध्ये
+            तुमचे स्वागत आहे.
+
+        </p>
+
+
+    </section>
+
+
+
+    <!-- PROFILE -->
+
+    <section class="profile-card">
+
+
+        <h2>
+
+            👤 My Profile
+
+        </h2>
+
+
+        <div class="profile-info">
+
+
+            <div class="info-box">
+
+
+                <strong>
+                    पूर्ण नाव
+                </strong>
+
+
+                <span id="profileName">
+
+                    Loading...
+
+                </span>
+
+
+            </div>
+
+
+
+            <div class="info-box">
+
+
+                <strong>
+                    Email Address
+                </strong>
+
+
+                <span id="profileEmail">
+
+                    Loading...
+
+                </span>
+
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- COURSES -->
+
+    <div class="section-title">
+
+
+        <p>
+            DTE LEARNING
+        </p>
+
+
+        <h2>
+            Available Courses
+        </h2>
+
+
+    </div>
+
+
+
+    <section class="course-cards">
+
+
+        <!-- AI -->
+
+        <div class="course-card">
+
+
+            <div class="course-icon">
+                🤖
+            </div>
+
+
+            <h3>
+                AI & Artificial Intelligence
+            </h3>
+
+
+            <p>
+
+                Artificial Intelligence,
+                AI Tools आणि Generative AI
+                शिकण्यासाठी Course.
+
+            </p>
+
+
+            <a href="#"
+               class="course-btn">
+
+                Start Learning →
+
+            </a>
+
+
+        </div>
+
+
+
+        <!-- COMPUTER -->
+
+        <div class="course-card">
+
+
+            <div class="course-icon">
+                💻
+            </div>
+
+
+            <h3>
+                Computer Skills
+            </h3>
+
+
+            <p>
+
+                Computer Basics,
+                Internet आणि Digital
+                Computer Skills.
+
+            </p>
+
+
+            <a href="#"
+               class="course-btn">
+
+                Start Learning →
+
+            </a>
+
+
+        </div>
+
+
+
+        <!-- DIGITAL -->
+
+        <div class="course-card">
+
+
+            <div class="course-icon">
+                🌐
+            </div>
+
+
+            <h3>
+                Digital Skills
+            </h3>
+
+
+            <p>
+
+                Digital Tools आणि
+                Online Services
+                शिकण्यासाठी Course.
+
+            </p>
+
+
+            <a href="#"
+               class="course-btn">
+
+                Start Learning →
+
+            </a>
+
+
+        </div>
+
+
+
+        <!-- CYBER -->
+
+        <div class="course-card">
+
+
+            <div class="course-icon">
+                🔐
+            </div>
+
+
+            <h3>
+                Cyber Security
+            </h3>
+
+
+            <p>
+
+                Online Safety,
+                Cyber Awareness आणि
+                Privacy Knowledge.
+
+            </p>
+
+
+            <a href="#"
+               class="course-btn">
+
+                Start Learning →
+
+            </a>
+
+
+        </div>
+
+
+
+        <!-- PYTHON -->
+
+        <div class="course-card">
+
+
+            <div class="course-icon">
+                🐍
+            </div>
+
+
+            <h3>
+                Python Programming
+            </h3>
+
+
+            <p>
+
+                Python Programming
+                आणि Coding Skills
+                शिकण्यासाठी Course.
+
+            </p>
+
+
+            <a href="#"
+               class="course-btn">
+
+                Start Learning →
+
+            </a>
+
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+
+    © 2026
+
+    <strong>
+        DTE – Digital Technology Education
+    </strong>
+
+
+    <br>
+
+
+    Student Learning Portal
+
+</footer>
+
+
+
+<!-- ================= FIREBASE ================= -->
+
+<script type="module">
+
+
+    /* FIREBASE */
+
+    import {
+        initializeApp
+    }
+    from "https://www.gstatic.com/firebasejs/12.17.0/firebase-app.js";
+
+
+    import {
+        getAuth,
+        onAuthStateChanged,
+        signOut
+    }
+    from "https://www.gstatic.com/firebasejs/12.17.0/firebase-auth.js";
+
+
+    /* CONFIG */
+
+    const firebaseConfig = {
+
+        apiKey:
+        "AIzaSyB55Au5qzCGpSvju4_GtdvYLkInPD5wmGc",
+
+        authDomain:
+        "dte-digital-education.firebaseapp.com",
+
+        projectId:
+        "dte-digital-education",
+
+        storageBucket:
+        "dte-digital-education.firebasestorage.app",
+
+        messagingSenderId:
+        "115032743682",
+
+        appId:
+        "1:115032743682:web:ca98f116d2fe6b5173ac1b"
+
+    };
+
+
+    /* INITIALIZE */
+
+    const app =
+        initializeApp(firebaseConfig);
+
+
+    const auth =
+        getAuth(app);
+
+
+    /* ELEMENTS */
+
+    const studentName =
+        document.getElementById(
+            "studentName"
+        );
+
+
+    const profileName =
+        document.getElementById(
+            "profileName"
+        );
+
+
+    const profileEmail =
+        document.getElementById(
+            "profileEmail"
+        );
+
+
+    /* CHECK LOGIN */
+
+    onAuthStateChanged(
+
+        auth,
+
+        (user) => {
+
+
+            /* NOT LOGGED IN */
+
+            if (!user) {
+
+
+                window.location.href =
+                    "login.html";
+
+
+                return;
+
+            }
+
+
+            /* EMAIL NOT VERIFIED */
+
+            if (!user.emailVerified) {
+
+
+                window.location.href =
+                    "login.html";
+
+
+                return;
+
+            }
+
+
+            /* STUDENT NAME */
+
+            const name =
+                user.displayName ||
+                "Student";
+
+
+            /* SHOW NAME */
+
+            studentName.textContent =
+                name;
+
+
+            profileName.textContent =
+                name;
+
+
+            profileEmail.textContent =
+                user.email;
+
+
+        }
+
+    );
+
+
+    /* LOGOUT */
+
+    document
+        .getElementById("logoutBtn")
+        .addEventListener(
+
+            "click",
+
+            async () => {
+
+
+                try {
+
+
+                    await signOut(auth);
+
+
+                    window.location.href =
+                        "login.html";
+
+
+                }
+
+                catch (error) {
+
+
+                    alert(
+                        "Logout करताना समस्या आली."
+                    );
+
+
+                }
+
+            }
+
+        );
+
+
+</script>
+
+
+</body>
+
+</html>
