@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="mr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Student Login | DTE</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, "Noto Sans Devanagari", sans-serif;
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 30px 15px;
+
+            background:
+                radial-gradient(circle at top right, #123c70, transparent 40%),
+                linear-gradient(135deg, #06142d, #092c55);
+
+            color: #172033;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 470px;
+        }
+
+        /* LOGO */
+
+        .logo-section {
+            text-align: center;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .logo-section img {
+            width: 75px;
+            height: 75px;
+            object-fit: contain;
+            border-radius: 15px;
+            margin-bottom: 8px;
+        }
+
+        .logo-section h1 {
+            color: #f5bd35;
+            font-size: 30px;
+            letter-spacing: 3px;
+        }
+
+        .logo-section p {
+            font-size: 14px;
+            color: #ddd;
+        }
+
+        /* LOGIN CARD */
+
+        .login-card {
+            background: white;
+            width: 100%;
+            padding: 35px;
+
+            border-radius: 22px;
+
+            box-shadow:
+                0 20px 50px rgba(0,0,0,0.35);
+        }
+
+        .login-card h2 {
+            text-align: center;
+            color: #07152f;
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 28px;
+        }
+
+        /* FORM */
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #07152f;
+            font-weight: bold;
+            margin-bottom: 7px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 13px 15px;
+
+            border: 1px solid #d5dbe5;
+            border-radius: 10px;
+
+            font-size: 15px;
+            outline: none;
+
+            transition: 0.3s;
+        }
+
+        .form-group input:focus {
+            border-color: #f5bd35;
+
+            box-shadow:
+                0 0 0 3px rgba(245,189,53,0.15);
+        }
+
+        /* LOGIN BUTTON */
+
+        .login-btn {
+            width: 100%;
+
+            padding: 14px;
+            margin-top: 5px;
+
+            border: none;
+            border-radius: 30px;
+
+            background: #f5bd35;
+            color: #07152f;
+
+            font-size: 17px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .login-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        /* FORGOT PASSWORD */
+
+        .forgot-password {
+            text-align: right;
+            margin-top: 10px;
+        }
+
+        .forgot-password a {
+            color: #07152f;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .forgot-password a:hover {
+            color: #c08a12;
+        }
+
+        /* MESSAGE */
+
+        .message {
+            display: none;
+
+            margin-top: 18px;
+            padding: 14px;
+
+            border-radius: 10px;
+
+            text-align: center;
+
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .success {
+            display: block;
+
+            background: #e8f8ee;
+            color: #16733a;
+
+            border: 1px solid #9bd8b2;
+        }
+
+        .error {
+            display: block;
+
+            background: #fff0f0;
+            color: #b42318;
+
+            border: 1px solid #f2aaaa;
+        }
+
+        /* REGISTER LINK */
+
+        .register-link {
+            text-align: center;
+
+            margin-top: 22px;
+
+            color: #555;
+        }
+
+        .register-link a {
+            color: #07152f;
+
+            font-weight: bold;
+
+            text-decoration: none;
+        }
+
+        .register-link a:hover {
+            color: #c08a12;
+        }
+
+        /* HOME LINK */
+
+        .home-link {
+            display: block;
+
+            text-align: center;
+
+            margin-top: 18px;
+
+            color: #07152f;
+
+            text-decoration: none;
+
+            font-weight: bold;
+        }
+
+        .home-link:hover {
+            color: #c08a12;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 500px) {
+
+            .login-card {
+                padding: 25px 20px;
+            }
+
+            .logo-section h1 {
+                font-size: 26px;
+            }
+
+            .login-card h2 {
+                font-size: 24px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="login-container">
+
+
+    <!-- DTE LOGO -->
+
+    <div class="logo-section">
+
+        <img src="dte-logo.png"
+             alt="DTE Logo">
+
+        <h1>
+            DTE
+        </h1>
+
+        <p>
+            Digital Technology Education
+        </p>
+
+    </div>
+
+
+    <!-- LOGIN CARD -->
+
+    <div class="login-card">
+
+
+        <h2>
+            Student Login
+        </h2>
+
+
+        <p class="subtitle">
+            तुमच्या DTE Student Account मध्ये Login करा
+        </p>
+
+
+        <!-- LOGIN FORM -->
+
+        <form id="loginForm">
+
+
+            <!-- EMAIL -->
+
+            <div class="form-group">
+
+                <label for="email">
+                    Email Address
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="example@gmail.com"
+                    required
+                >
+
+            </div>
+
+
+            <!-- PASSWORD -->
+
+            <div class="form-group">
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="तुमचा Password टाका"
+                    required
+                >
+
+            </div>
+
+
+            <!-- FORGOT PASSWORD -->
+
+            <div class="forgot-password">
+
+                <a href="forgot-password.html">
+
+                    Password विसरलात?
+
+                </a>
+
+            </div>
+
+
+            <br>
+
+
+            <!-- LOGIN BUTTON -->
+
+            <button
+                type="submit"
+                class="login-btn"
+                id="loginBtn">
+
+                Login करा
+
+            </button>
+
+
+        </form>
+
+
+        <!-- MESSAGE -->
+
+        <div id="message"
+             class="message">
+
+        </div>
+
+
+        <!-- REGISTER -->
+
+        <div class="register-link">
+
+            Account नाही?
+
+            <a href="register.html">
+                Student Registration करा
+            </a>
+
+        </div>
+
+
+        <!-- HOME -->
+
+        <a href="index.html"
+           class="home-link">
+
+            ← DTE Home Page वर जा
+
+        </a>
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-- ================= FIREBASE ================= -->
+
+<script type="module">
+
+
+    /* FIREBASE IMPORT */
+
+    import {
+        initializeApp
+    }
+    from "https://www.gstatic.com/firebasejs/12.17.0/firebase-app.js";
+
+
+    import {
+        getAuth,
+        signInWithEmailAndPassword,
+        sendEmailVerification
+    }
+    from "https://www.gstatic.com/firebasejs/12.17.0/firebase-auth.js";
+
+
+    /* FIREBASE CONFIG */
+
+    const firebaseConfig = {
+
+        apiKey:
+        "AIzaSyB55Au5qzCGpSvju4_GtdvYLkInPD5wmGc",
+
+        authDomain:
+        "dte-digital-education.firebaseapp.com",
+
+        projectId:
+        "dte-digital-education",
+
+        storageBucket:
+        "dte-digital-education.firebasestorage.app",
+
+        messagingSenderId:
+        "115032743682",
+
+        appId:
+        "1:115032743682:web:ca98f116d2fe6b5173ac1b"
+
+    };
+
+
+    /* INITIALIZE FIREBASE */
+
+    const app =
+        initializeApp(firebaseConfig);
+
+
+    /* AUTH */
+
+    const auth =
+        getAuth(app);
+
+
+    /* FORM */
+
+    const loginForm =
+        document.getElementById("loginForm");
+
+
+    const loginBtn =
+        document.getElementById("loginBtn");
+
+
+    const message =
+        document.getElementById("message");
+
+
+    /* LOGIN */
+
+    loginForm.addEventListener(
+        "submit",
+        async function(event) {
+
+
+            event.preventDefault();
+
+
+            const email =
+                document
+                .getElementById("email")
+                .value
+                .trim();
+
+
+            const password =
+                document
+                .getElementById("password")
+                .value;
+
+
+            /* BUTTON LOADING */
+
+            loginBtn.disabled = true;
+
+            loginBtn.textContent =
+                "Login होत आहे...";
+
+
+            try {
+
+
+                /* SIGN IN */
+
+                const userCredential =
+                    await signInWithEmailAndPassword(
+                        auth,
+                        email,
+                        password
+                    );
+
+
+                const user =
+                    userCredential.user;
+
+
+                /* EMAIL VERIFICATION CHECK */
+
+                if (!user.emailVerified) {
+
+
+                    showMessage(
+
+                        "⚠️ तुमचा Email अजून Verify झालेला नाही.<br><br>" +
+
+                        "तुमच्या Email मधील Verification Link वर क्लिक करा.<br><br>" +
+
+                        "Verification Email पुन्हा पाठवायचा असल्यास खालील Button वापरा.",
+
+                        "error"
+
+                    );
+
+
+                    /* RESEND VERIFICATION BUTTON */
+
+                    const resendButton =
+                        document.createElement("button");
+
+
+                    resendButton.textContent =
+                        "📧 Verification Email पुन्हा पाठवा";
+
+
+                    resendButton.style.marginTop =
+                        "10px";
+
+
+                    resendButton.style.padding =
+                        "10px 18px";
+
+
+                    resendButton.style.border =
+                        "none";
+
+
+                    resendButton.style.borderRadius =
+                        "20px";
+
+
+                    resendButton.style.background =
+                        "#f5bd35";
+
+
+                    resendButton.style.color =
+                        "#07152f";
+
+
+                    resendButton.style.fontWeight =
+                        "bold";
+
+
+                    resendButton.style.cursor =
+                        "pointer";
+
+
+                    message.appendChild(
+                        document.createElement("br")
+                    );
+
+
+                    message.appendChild(
+                        resendButton
+                    );
+
+
+                    resendButton.addEventListener(
+                        "click",
+                        async function() {
+
+
+                            try {
+
+
+                                await sendEmailVerification(
+                                    user
+                                );
+
+
+                                showMessage(
+
+                                    "✅ Verification Email पुन्हा पाठवला आहे.<br><br>" +
+
+                                    "कृपया Inbox किंवा Spam Folder तपासा.",
+
+                                    "success"
+
+                                );
+
+
+                            }
+
+                            catch (error) {
+
+
+                                showMessage(
+
+                                    "❌ Email पाठवताना समस्या आली. थोड्या वेळाने पुन्हा प्रयत्न करा.",
+
+                                    "error"
+
+                                );
+
+                            }
+
+                        }
+                    );
+
+
+                    loginBtn.disabled = false;
+
+                    loginBtn.textContent =
+                        "Login करा";
+
+
+                    return;
+
+                }
+
+
+                /* SUCCESS */
+
+                showMessage(
+
+                    "✅ Login यशस्वी झाले!<br><br>" +
+
+                    "DTE Student Dashboard उघडत आहे...",
+
+                    "success"
+
+                );
+
+
+                /* DASHBOARD */
+
+                setTimeout(
+                    function() {
+
+                        window.location.href =
+                            "student-dashboard.html";
+
+                    },
+                    1500
+                );
+
+
+            }
+
+
+            catch (error) {
+
+
+                console.error(error);
+
+
+                let errorMessage =
+                    "❌ Login करताना समस्या आली.";
+
+
+                if (
+                    error.code ===
+                    "auth/invalid-credential"
+                ) {
+
+                    errorMessage =
+                        "❌ Email किंवा Password चुकीचा आहे.";
+
+                }
+
+
+                else if (
+                    error.code ===
+                    "auth/user-not-found"
+                ) {
+
+                    errorMessage =
+                        "❌ या Email वर कोणतेही Account सापडले नाही.";
+
+                }
+
+
+                else if (
+                    error.code ===
+                    "auth/wrong-password"
+                ) {
+
+                    errorMessage =
+                        "❌ Password चुकीचा आहे.";
+
+                }
+
+
+                else if (
+                    error.code ===
+                    "auth/invalid-email"
+                ) {
+
+                    errorMessage =
+                        "❌ कृपया योग्य Email Address टाका.";
+
+                }
+
+
+                showMessage(
+
+                    errorMessage,
+
+                    "error"
+
+                );
+
+
+                loginBtn.disabled = false;
+
+                loginBtn.textContent =
+                    "Login करा";
+
+            }
+
+        }
+    );
+
+
+    /* MESSAGE FUNCTION */
+
+    function showMessage(
+        text,
+        type
+    ) {
+
+        message.innerHTML =
+            text;
+
+        message.className =
+            "message " + type;
+
+    }
+
+
+</script>
+
+
+</body>
+
+</html>
