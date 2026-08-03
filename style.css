@@ -1,4 +1,3 @@
-```css
 * {
     margin: 0;
     padding: 0;
@@ -32,8 +31,6 @@ body {
     box-shadow: 0 3px 15px rgba(0,0,0,0.2);
 }
 
-/* LOGO */
-
 .logo {
     display: flex;
     align-items: center;
@@ -53,11 +50,9 @@ body {
     font-weight: bold;
 }
 
-/* NAVIGATION */
-
 nav {
     display: flex;
-    gap: 25px;
+    gap: 22px;
 }
 
 nav a {
@@ -70,7 +65,7 @@ nav a:hover {
     color: #f5bd35;
 }
 
-/* BUTTONS */
+/* ================= BUTTONS ================= */
 
 .apply-btn,
 .primary-btn,
@@ -89,10 +84,6 @@ nav a:hover {
     padding: 9px 22px;
 }
 
-.apply-btn:hover {
-    transform: translateY(-2px);
-}
-
 /* ================= HERO ================= */
 
 .hero {
@@ -108,8 +99,6 @@ nav a:hover {
         radial-gradient(circle at top right, #123c70, transparent 40%),
         linear-gradient(135deg, #06142d, #092c55);
 }
-
-/* LEFT CONTENT */
 
 .hero-content {
     max-width: 700px;
@@ -148,6 +137,32 @@ nav a:hover {
     color: #e0e7f0;
 }
 
+/* ================= HERO COURSES ================= */
+
+.hero-courses {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.hero-courses span {
+    padding: 8px 16px;
+    border: 1px solid #f5bd35;
+    border-radius: 25px;
+    color: white;
+    background: rgba(245,189,53,0.08);
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.hero-courses span:hover {
+    background: #f5bd35;
+    color: #07152f;
+    transform: translateY(-3px);
+}
+
 .hero-buttons {
     margin-top: 35px;
     display: flex;
@@ -166,11 +181,6 @@ nav a:hover {
     padding: 10px 28px;
 }
 
-.primary-btn:hover,
-.secondary-btn:hover {
-    transform: translateY(-3px);
-}
-
 /* ================= HERO FOUNDER ================= */
 
 .hero-founder {
@@ -183,23 +193,17 @@ nav a:hover {
     width: 280px;
     height: 360px;
     object-fit: contain;
-    object-position: center;
     display: block;
     margin: 0 auto 18px auto;
-
     border-radius: 18px;
     border: 3px solid #f5bd35;
-
     background: rgba(255,255,255,0.06);
-
-    box-shadow:
-        0 15px 40px rgba(0,0,0,0.45);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.45);
 }
 
 .hero-founder h3 {
     color: #f5bd35;
     font-size: 25px;
-    margin-top: 5px;
 }
 
 .hero-founder p {
@@ -246,7 +250,7 @@ nav a:hover {
     margin-bottom: 20px;
 }
 
-/* ================= CARDS ================= */
+/* ================= TOPICS ================= */
 
 .topics-section {
     background: #eef2f8;
@@ -284,11 +288,83 @@ nav a:hover {
     margin-bottom: 10px;
 }
 
+/* ================= COURSES ================= */
+
+.courses-section {
+    padding: 90px 7%;
+    background: white;
+}
+
+.courses-subtitle {
+    margin-top: 10px;
+    color: #555;
+    letter-spacing: 0;
+    font-weight: normal !important;
+}
+
+.course-cards {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.course-card {
+    background: #f8faff;
+    padding: 35px 25px;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid #e1e6ef;
+    border-top: 4px solid #f5bd35;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+    transition: 0.3s;
+}
+
+.course-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+.course-icon {
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+
+.course-card h3 {
+    color: #07152f;
+    font-size: 21px;
+    margin-bottom: 12px;
+}
+
+.course-card p {
+    color: #555;
+    font-size: 15px;
+    min-height: 75px;
+}
+
+.course-card a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 9px 22px;
+    border-radius: 25px;
+    background: #07152f;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.course-card a:hover {
+    background: #f5bd35;
+    color: #07152f;
+}
+
 /* ================= SOCIAL ================= */
 
 .social-section {
     padding: 80px 7%;
-    background: white;
+    background: #f5f7fb;
 }
 
 .social-cards {
@@ -306,6 +382,7 @@ nav a:hover {
     color: #172033;
     border-radius: 18px;
     border: 1px solid #ddd;
+    background: white;
     transition: 0.3s;
 }
 
@@ -345,12 +422,10 @@ nav a:hover {
 .founder-content h2 {
     font-size: 45px;
     color: #f5bd35;
-    margin-top: 5px;
 }
 
 .founder-content h3 {
     font-size: 22px;
-    margin-top: 5px;
 }
 
 .quote {
@@ -440,7 +515,8 @@ footer h3 {
         font-size: 27px;
     }
 
-    .cards {
+    .cards,
+    .course-cards {
         grid-template-columns: repeat(2, 1fr);
     }
 
@@ -477,8 +553,6 @@ footer h3 {
         font-size: 13px;
     }
 
-    /* HERO MOBILE */
-
     .hero {
         flex-direction: column;
         text-align: center;
@@ -499,12 +573,19 @@ footer h3 {
         font-size: 23px;
     }
 
+    .hero-courses {
+        justify-content: center;
+    }
+
+    .hero-courses span {
+        font-size: 13px;
+        padding: 7px 12px;
+    }
+
     .hero-buttons {
         flex-direction: column;
         align-items: center;
     }
-
-    /* FOUNDER PHOTO MOBILE */
 
     .hero-founder {
         width: 100%;
@@ -515,11 +596,8 @@ footer h3 {
         height: 300px;
     }
 
-    .hero-founder h3 {
-        font-size: 22px;
-    }
-
     .cards,
+    .course-cards,
     .social-cards {
         grid-template-columns: 1fr;
     }
@@ -533,4 +611,4 @@ footer h3 {
     }
 
 }
-```
+
